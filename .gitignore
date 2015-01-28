@@ -16,25 +16,4 @@ project/plugins/project/
 .scala_dependencies
 .worksheet
 
-.idea/scopes/
-.idea/dictionaries/
-.idea/inspectionProfiles/
-.idea/libraries/
-.idea/modules/
-.idea/.name
-.idea/*.xml
-!.idea/vcs.xml
-/classes
-/dist
-/out
-/SDK/*SDK
-/target
-/*.bat
-*.class
-out
-build
-.DS_Store
-*~
-target/
-
-testdata/debugger
+.idea
