@@ -1,7 +1,7 @@
 package org.mlayer.sorting
 
-class Sorting {
+object Sorting {
 
-  
+  def genArray(size: Int) = Array.fill(size)(scala.util.Random.nextInt(100))
 
 }
