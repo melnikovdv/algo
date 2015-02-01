@@ -11,7 +11,7 @@ object Sorting {
     case head :: tail => (head <= tail.head) && isSorted(tail)
   }
 
-  def mergeSort(list: List[Int]): List[Int] = {
+  def sortByMerge(list: List[Int]): List[Int] = {
     val n = list.length / 2
     if (n == 0) list
     else {
@@ -23,7 +23,26 @@ object Sorting {
           else merge(fst, ys1, acc :+ y)
       }
       val (fst, scd) = list.splitAt(n)
-      merge(mergeSort(fst), mergeSort(scd))
+      merge(sortByMerge(fst), sortByMerge(scd))
+    }
+  }
+
+  def countInversions(list: List[Int]): (List[Int], Long) = {
+    val n = list.length / 2
+    if (n == 0) (list, 0L)
+    else {
+      def mergeAndCountSplit(fst: List[Int], scd: List[Int], accInv: Long = 0L, acc: List[Int] = List()): (List[Int], Long) =
+        (fst, scd) match {
+        case (Nil, ys) => (acc ::: ys, accInv)
+        case (xs, Nil) => (acc ::: xs, accInv)
+        case (x :: xs1, y :: ys1) =>
+          if (x < y) mergeAndCountSplit(xs1, scd, accInv, acc :+ x)
+          else mergeAndCountSplit(fst, ys1, accInv + 1 + xs1.length, acc :+ y)
+      }
+      val (fst, scd) = list.splitAt(n)
+      val (left, countFst) = countInversions(fst)
+      val (right, countScd) = countInversions(scd)
+      mergeAndCountSplit(left, right, countFst + countScd)
     }
   }
 
