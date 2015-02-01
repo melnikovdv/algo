@@ -36,7 +36,7 @@ object Sorting {
         case (Nil, ys) => (acc ::: ys, accInv)
         case (xs, Nil) => (acc ::: xs, accInv)
         case (x :: xs1, y :: ys1) =>
-          if (x < y) mergeAndCountSplit(xs1, scd, accInv, acc :+ x)
+          if (x <= y) mergeAndCountSplit(xs1, scd, accInv, acc :+ x)
           else mergeAndCountSplit(fst, ys1, accInv + 1 + xs1.length, acc :+ y)
       }
       val (fst, scd) = list.splitAt(n)

@@ -36,7 +36,9 @@ class Sorting$Test extends FunSuite {
     assert(Sorting.countInversions(List(1, 3, 5, 2, 4, 6)) === (List(1, 2, 3, 4, 5, 6), 3))
     assert(Sorting.countInversions(List(1, 5, 3, 2, 4))._2 === 4)
     assert(Sorting.countInversions(List(5, 4, 3, 2, 1))._2 === 10)
-    assert(Sorting.countInversions(List(1, 3, 5, 2, 4, 6, 1))._2 === 9)
+    assert(Sorting.countInversions(List(1, 3, 1))._2 === 1)
+    assert(Sorting.countInversions(List(1, 1, 1))._2 === 0)
+    assert(Sorting.countInversions(List(1, 3, 5, 2, 4, 6, 1))._2 === 8)
     assert(Sorting.countInversions(List(9, 12, 3, 1, 6, 8, 2, 5, 14, 13, 11, 7, 10, 4, 0))._2 === 56)
     assert(Sorting.countInversions(List(37, 7, 2, 14, 35, 47, 10, 24, 44, 17, 34, 11, 16, 48, 1,
       39, 6, 33, 43, 26, 40, 4, 28, 5, 38, 41, 42, 12, 13, 21, 29, 18, 3, 19, 0, 32, 46, 27, 31,
