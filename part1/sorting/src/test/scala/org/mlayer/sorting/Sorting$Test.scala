@@ -57,15 +57,15 @@ class Sorting$Test extends FunSuite {
   }
 
   test("merge sort time") {
-    val a = Sorting.genList(100000, 10000)
+    val a = Sorting.genList(10000, 10000)
     val start = Platform.currentTime
     val a1 = Sorting.sortByMerge(a)
     println("Merge sort time for array size = " + a.length + " is: " + (Platform.currentTime - start) + " ms")
 
   }
 
-  ignore("time for bubble sorting") {
-    val a = Sorting.genList(5000, 1000)
+  test("bubble sorting time") {
+    val a = Sorting.genList(10000, 10000)
     val start = Platform.currentTime
     val sorted = Sorting.bubbleSort(a)
     println("Time for buuble sort size = " + sorted.length + " is: " + (Platform.currentTime - start) + " ms")
