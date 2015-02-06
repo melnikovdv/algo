@@ -1,17 +1,9 @@
 package org.mlayer.sorting
 
-object Sorting {
+object Merge extends Sort{
 
-  def genList(size: Int, max: Int): List[Int] = List.fill(size)(scala.util.Random.nextInt(max))
-  def genList(size: Int): List[Int] = genList(size, 100)
+  override def sort(list: List[Int]): List[Int] = {
 
-  def isSorted(list: List[Int]): Boolean = list match {
-    case Nil => throw new Error("list is empty")
-    case head :: Nil => true
-    case head :: tail => (head <= tail.head) && isSorted(tail)
-  }
-
-  def sortByMerge(list: List[Int]): List[Int] = {
     def doSort(list: List[Int], len: Int): List[Int] = {
       val n = len / 2
       if (n == 0) list
@@ -31,6 +23,7 @@ object Sorting {
   }
 
   def countInversions(list: List[Int]): Long = {
+
     def doCount(list: List[Int], len: Int): (List[Int], Long) = {
       val n = len / 2
       if (n == 0) (list, 0L)
@@ -50,20 +43,5 @@ object Sorting {
       }
     }
     doCount(list, list.length)._2
-  }
-
-  def bubbleSort(list: List[Int]): List[Int] = {
-    val a = list.toBuffer
-    val len = a.length
-    for (i <- 0 to len - 1) {
-      for (j <- 0 to len - 2) {
-        if (a(j) > a(j + 1)) {
-          val tmp = a(j)
-          a(j) = a(j + 1)
-          a(j + 1) = tmp
-        }
-      }
-    }
-    a.toList
   }
 }
