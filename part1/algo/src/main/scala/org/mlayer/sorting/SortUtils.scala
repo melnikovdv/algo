@@ -1,6 +1,6 @@
 package org.mlayer.sorting
 
-trait Utils {
+trait SortUtils {
 
   def swap(a: Array[Int], i: Int, j: Int) = {
     if (i != j) {

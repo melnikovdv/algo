@@ -2,9 +2,9 @@ package org.mlayer.sorting
 
 import org.scalatest.FunSuite
 
-class UtilsTest extends FunSuite with SortData {
+class SortUtilsTest extends FunSuite with SortData {
 
-  val utils = new Utils {
+  val utils = new SortUtils {
 
     test("genList") {
       assert(data10.length === 10)

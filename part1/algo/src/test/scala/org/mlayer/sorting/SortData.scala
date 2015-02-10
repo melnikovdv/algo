@@ -1,6 +1,6 @@
 package org.mlayer.sorting
 
-trait SortData extends Utils{
+trait SortData extends SortUtils{
 
   val data10 = genList(10, 10)
   val data10k = genList(10000, 10000)

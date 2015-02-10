@@ -1,10 +1,11 @@
 package org.mlayer.sorting
 
+import org.mlayer.utils.Utils
 import org.scalatest.FunSuite
 
 import scala.compat.Platform
 
-class Algo$Test extends FunSuite {
+class AssignmentTest extends FunSuite {
 
   test("assignment 1.1: count array inversions") {
     val start = Platform.currentTime
@@ -25,21 +26,7 @@ class Algo$Test extends FunSuite {
 
 
   def loadData(file: String): List[Int] = {
-    val wordStream = Option {
-      getClass.getClassLoader.getResourceAsStream(file)
-    } getOrElse {
-      sys.error("Could not load word list, dictionary file not found")
-    }
-    try {
-      val s = io.Source.fromInputStream(wordStream)
-      s.getLines().toList.map(_.toInt)
-    } catch {
-      case e: Exception =>
-        println("Could not load word list: " + e)
-        throw e
-    } finally {
-      wordStream.close()
-    }
+    Utils.loadData(file).map(_.toInt)
   }
 
 }

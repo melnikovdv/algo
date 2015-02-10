@@ -1,6 +1,6 @@
 package org.mlayer.sorting
 
-trait InvCountData extends Utils {
+trait InvCountData extends SortUtils {
 
   val invList01 = List()
   val invList01Count = 0
