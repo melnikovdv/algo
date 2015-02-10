@@ -9,13 +9,13 @@ class AssignmentTest extends FunSuite {
 
   test("assignment 1.1: count array inversions") {
     val start = Platform.currentTime
-    val list = loadData("assignment1data.txt")
+    val list = loadData("assignments/1/data.txt")
     println("inversions count for array size " + list.length + " is: " + Merge.countInversions(list) + ". Time: " + (Platform.currentTime - start) + " ms")
   }
 
   test("assignment 1.2: count comparisons with different partitions") {
     var start = 0L
-    val list = loadData("assignment2data.txt")
+    val list = loadData("assignments/2/data.txt")
     start = Platform.currentTime
     println("comparisons partition_first count for array size " + list.length + " is: " + Quick.sortPartFirst(list)._2 + ". Time: " + (Platform.currentTime - start) + " ms")
     start = Platform.currentTime // 160361
