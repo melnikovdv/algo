@@ -4,7 +4,7 @@ object Contraction {
 
   def minCut(g: Map[Int, List[Int]]): Map[Int, List[Int]] = {
     var minCut = g
-    for { i <- 1 to g.size * g.size} {
+    for { i <- 1 to 1000} {
       val contraction = contract(g)
       if (minCut.head._2.size - 1 > contraction.head._2.size - 1) minCut = contraction
     }

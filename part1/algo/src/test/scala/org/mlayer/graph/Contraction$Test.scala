@@ -3,6 +3,8 @@ package org.mlayer.graph
 import org.mlayer.utils.Utils
 import org.scalatest.FunSuite
 
+import scala.compat.Platform
+
 class Contraction$Test extends FunSuite {
 
   val graph00 = prepareData("1 2 3 4\n2 1 3\n3 1 2\n4 1 5 6\n5 4 6\n6 5 4".split("\n").toList)
@@ -67,7 +69,9 @@ class Contraction$Test extends FunSuite {
 
   test("assignment") {
     val data = loadData("assignments/3/kargerMinCut.txt")
-    println("min cuts: " + Contraction.minCut(data).head._2.size)
+
+    val start = Platform.currentTime
+    println("min cuts for " + data.size + " is: " + Contraction.minCut(data).head._2.size + ". Time: " + (Platform.currentTime - start) + " ms")
   }
 
   def prepareData(data: List[String]): Map[Int, List[Int]] = data
