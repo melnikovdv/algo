@@ -5,6 +5,8 @@ import org.scalatest.FunSuite
 
 class Contraction$Test extends FunSuite {
 
+  val graph00 = prepareData("1 2 3 4\n2 1 3\n3 1 2\n4 1 5 6\n5 4 6\n6 5 4".split("\n").toList)
+
   /*
   3--4-----5--6
   |\/|     |\/|
@@ -54,19 +56,26 @@ class Contraction$Test extends FunSuite {
     "38 33 7 28 17 40\n39 18 24 13 9 1\n40 17 32 22 34 38").split("\n").toList)
 
   test("min cut search with contraction algorithm") {
-    assert(Contraction.minCut(graph01) === 2) // cuts are [(1,7), (4,5)]
-    assert(Contraction.minCut(graph02) === 2) // cuts are [(1,7), (4,5)]
-    assert(Contraction.minCut(graph03) === 1) // cut is [(4,5)]
-    assert(Contraction.minCut(graph04) === 1) // cut is [(4,5)]
-    assert(Contraction.minCut(graph05) === 2)
-    assert(Contraction.minCut(graph06) === 3)
+    assert(Contraction.minCut(graph00).head._2.size === 1)
+    assert(Contraction.minCut(graph01).head._2.size === 2) // cuts are [(1,7), (4,5)]
+    assert(Contraction.minCut(graph02).head._2.size === 2) // cuts are [(1,7), (4,5)]
+    assert(Contraction.minCut(graph03).head._2.size === 1) // cut is [(4,5)]
+    assert(Contraction.minCut(graph04).head._2.size === 1) // cut is [(4,5)]
+    assert(Contraction.minCut(graph05).head._2.size === 2)
+    assert(Contraction.minCut(graph06).head._2.size === 3)
+  }
+
+  test("assignment") {
+    val data = loadData("assignments/3/kargerMinCut.txt")
+    println("min cuts: " + Contraction.minCut(data).head._2.size)
   }
 
   def prepareData(data: List[String]): Map[Int, List[Int]] = data
-    .map(_.split(" ")
-    .map(_.toInt))
-    .map(a => (a(0), a.drop(1).toList))
+    .map(_.split("\\s")
+    .map(_.toInt).toList)
+    .map(a => (a(0), a.drop(1)))
     .toMap
+
 
   def loadData(file: String): Map[Int, List[Int]] = {
     prepareData(Utils.loadData(file))
